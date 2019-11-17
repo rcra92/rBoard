@@ -38,7 +38,7 @@ class ReactKeyboard : InputMethodService(), KeyboardView.OnKeyboardActionListene
         var ic:InputConnection = getCurrentInputConnection();
         playClick(i);
         when (i) {
-            Keyboard.KEYCODE_DELETE -> ic.deleteSurroundingText(1, 0);
+            Keyboard.KEYCODE_DELETE -> return
             Keyboard.KEYCODE_SHIFT -> {
                 isCaps = !isCaps;
                 keyboard?.setShifted(isCaps);
@@ -49,8 +49,8 @@ class ReactKeyboard : InputMethodService(), KeyboardView.OnKeyboardActionListene
                 var code: Char = i.toChar();
                 if (Character.isLetter(code) && isCaps) {
                     code = Character.toUpperCase(code);
-                    ic.commitText(code.toString(), 1);
                 }
+                ic.commitText(code.toString(), 1);
             }
         }
     }
@@ -98,7 +98,7 @@ class ReactKeyboard : InputMethodService(), KeyboardView.OnKeyboardActionListene
         var ic:InputConnection = getCurrentInputConnection();
         playClick(i);
         when (i) {
-            Keyboard.KEYCODE_DELETE -> ic.deleteSurroundingText(1, 0);
+            Keyboard.KEYCODE_DELETE -> return;
             Keyboard.KEYCODE_SHIFT -> {
                 isCaps = !isCaps;
                 keyboard?.setShifted(isCaps);
@@ -114,6 +114,7 @@ class ReactKeyboard : InputMethodService(), KeyboardView.OnKeyboardActionListene
             }
         }
     }
+
 
     private fun playClick(i: Int) {
         var am:AudioManager = getSystemService(AUDIO_SERVICE) as AudioManager;

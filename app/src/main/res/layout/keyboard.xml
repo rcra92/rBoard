@@ -3,8 +3,10 @@
     android:id="@+id/keyboard"
     android:layout_alignParentBottom="true"
     android:keyBackground="@drawable/key_background"
+    android:keyTextColor="@android:color/black"
     android:keyPreviewLayout="@layout/key_preview"
-    android:background="@color/colorPrimaryDark"
+    android:shadowRadius="0.0"
+    android:background="@color/keyboardBackgroundColor"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
